@@ -288,7 +288,7 @@ if __name__ == '__main__':
     try:
         # Test Client
         client = Client(path=path, file=file)
-        model_name = input('Please enter the algorithm name: 1. IsolatedForest 2. OneClassSVM')
+        model_name = input('Please enter the option: 1. IsolatedForest 2. OneClassSVM \n')
 
         algorithms = {'1': 'isolatedforest', '2': 'oneclasssvm'}
         algorithm = algorithms.get(model_name)
@@ -297,6 +297,7 @@ if __name__ == '__main__':
         else:
             print('Invalid Option specified.')
 
+        # Need to return non-errorneous data points
         # errorneous_points = client.getErrorneousDataPoints()
         data_points = client.getDataPoints()
 
