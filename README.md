@@ -1,6 +1,6 @@
 # Disregard Errorenous datapoints in the dataset
 
-This application helps to find the errorenous data points in the dataset using two different algorithms.
+This application helps to filter out the errorenous data points in the dataset using two different algorithms.
 
 ## Prerequites
 
