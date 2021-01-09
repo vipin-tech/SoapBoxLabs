@@ -286,7 +286,7 @@ if __name__ == '__main__':
     file = input('Please enter the file name: ').strip()
     try:
         client = Client(path=path, file=file)
-        model_name = input('Please enter the option: 1. Isolation Forest 2. OneClassSVM \n')
+        model_name = input('Please enter the option: 1. Isolation Forest 2. OneClassSVM \n').strip()
 
         algorithms = {'1': 'isolationforest', '2': 'oneclasssvm'}
         algorithm = algorithms.get(model_name)
