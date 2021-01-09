@@ -70,6 +70,34 @@ class OutlierDetector:
             raise Exception('Exception in describeDataAttribute \
                             {}'.format(str(ex)))
 
+    def scale(self) -> None:
+        raise NotImplementedError
+
+    def fit(self) -> None:
+        raise NotImplementedError
+
+    def predict(self) -> None:
+        raise NotImplementedError
+
+    def compute(self) -> None:
+        """
+        Method to fit the model and predict the erroneous data points
+        """
+        try:
+            self.scale()
+            self.fit()
+            self.predict()
+
+        except KeyError as ex:
+            raise KeyError('Trying to access invalid key. Error: {}'.
+                           format(str(ex)))
+
+        except NotImplementedError:
+            raise NotADirectoryError('Not Implemented scale/fit/predict methods.')
+
+        except Exception as ex:
+            raise Exception('Error while building IsolationForestModel. Error: {}'.format(str(ex)))
+
 
 class IsolationForestModel(OutlierDetector):
     """
@@ -131,22 +159,6 @@ class IsolationForestModel(OutlierDetector):
                            format(ex))
         except Exception as ex:
             raise Exception('Error while fetching Non-Errorneous data points. Error: {}'.format(str(ex)))
-
-    def compute(self) -> None:
-        """
-        Method to fit the model and predict the erroneous data points
-        """
-        try:
-            self.scale()
-            self.fit()
-            self.predict()
-
-        except KeyError as ex:
-            raise KeyError('Trying to access invalid key. Error: {}'.
-                           format(str(ex)))
-
-        except Exception as ex:
-            raise Exception('Error while building IsolationForestModel. Error: {}'.format(str(ex)))
 
 
 class OneClassSVMModel(OutlierDetector):
@@ -213,22 +225,6 @@ class OneClassSVMModel(OutlierDetector):
         return self.df.loc[self.df['ocs_anomaly'] == 1, ['Timestamp',
                                                          'Latitude',
                                                          'Longitude']]
-
-    def compute(self) -> None:
-        """
-        Method to fit the model and predict the erroneous data points
-        """
-        try:
-            self.scale()
-            self.fit()
-            self.predict()
-
-        except KeyError as ex:
-            raise KeyError('Trying to access invalid key. Error: {}'.
-                           format(str(ex)))
-
-        except Exception as ex:
-            raise Exception('Error while fetching Non-Errorneous data points. Error: {}'.format(str(ex)))
 
 
 class Client:
@@ -311,6 +307,9 @@ if __name__ == '__main__':
         print(str(ex))
 
     except KeyError as ex:
+        print(str(ex))
+
+    except NotImplementedError as ex:
         print(str(ex))
 
     except Exception as ex:
