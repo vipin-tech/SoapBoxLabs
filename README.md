@@ -72,4 +72,4 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 
 ### Summary
 
-From the above plots and output, it is evident that Isolation Forests perform better as compared to the OneClassSVM algorithm in detecting errorenous points for  this dataset.
+_From the above plots and output, it is evident that Isolation Forests perform better as compared to the OneClassSVM algorithm in detecting errorenous points for  this dataset._
