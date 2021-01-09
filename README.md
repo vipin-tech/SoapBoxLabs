@@ -1,4 +1,4 @@
-# Disregard Errorenous datapoints in the dataset
+# Filter Errorenous datapoints in the dataset
 
 This application helps to filter out the errorenous data points in the dataset using two different algorithms.
 
