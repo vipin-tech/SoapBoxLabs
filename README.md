@@ -39,41 +39,42 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 
 ### From the below plots we notice some errorenous data points (spikes) in the dataset.
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png" alt="" width="900px" height="450px">
 
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png" alt="" width="900px" height="450px">
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png)
 
 ### Detection of errorenous points using Isolation Forest algorithm.
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png" alt="" width="900px" height="450px">
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png" alt="" width="900px" height="450px">
+
 
 ### Detection of errorenous points using OneClassSVM algorithm.
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image10.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image10.png" alt="" width="900px" height="450px">
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image11.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image11.png" alt="" width="900px" height="450px">
 
 
 ## Application Output
 
 ### Non Errorenous data points found using Isolation Forest and OneClassSVM algorithms
 
-![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image05.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image05.png" alt="">
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image06.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image06.png" alt="">
 
 ### Errorenous data points found using IsolationForest and OneClassSVM algorithms
 
-![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image07.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image07.png" alt="">
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image08.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image08.png" alt="">
 
 ### Unit Tests
 
-![Unit Test](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image09.png)
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image09.png" alt="">
 
 
 ### Conclusion
