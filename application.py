@@ -93,7 +93,7 @@ class OutlierDetector:
                            format(str(ex)))
 
         except NotImplementedError:
-            raise NotADirectoryError('Not Implemented scale/fit/predict methods.')
+            raise NotImplementedError('Not Implemented scale/fit/predict methods.')
 
         except Exception as ex:
             raise Exception('Error while building IsolationForestModel. Error: {}'.format(str(ex)))
