@@ -2,7 +2,7 @@
 
 This application helps to filter out the errorenous data points in the dataset using two different algorithms.
 
-## Prerequites
+## Prerequisites
 
 * Python 3.x
 * numpy
