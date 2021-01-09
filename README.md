@@ -68,3 +68,8 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 ### Unit Tests
 
 ![Unit Test](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image09.png)
+
+
+### Summary
+
+From the above plots and output, it is evident that Isolation Forests perform better as compared to the OneClassSVM algorithm in detecting errorenous points for  this dataset.
