@@ -50,6 +50,12 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 
 ![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png)
 
+### Detection of errorenous points using OneClassSVM algorithm.
+
+![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image10.png)
+
+![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image11.png)
+
 
 ## Application Output
 
