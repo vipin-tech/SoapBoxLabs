@@ -9,6 +9,12 @@ This application helps to filter out the errorenous data points in the dataset u
 * pandas
 * scikit-learn
 
+> **How to run the application?**
+>> python application.py
+
+> **How to run the test cases?**
+>> python test_application.py
+
 ## Algorithms
 
 The two algorithms used are:
