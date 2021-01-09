@@ -39,23 +39,23 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 
 ### From the below plots we notice some errorenous data points (spikes) in the dataset.
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png" alt="" width="800px" height="450px">
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png" alt="" width="800px" height="450px">
 
 
 ### Detection of errorenous points using Isolation Forest algorithm.
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png" alt="" width="800px" height="450px">
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png" alt="" width="800px" height="450px">
 
 
 ### Detection of errorenous points using OneClassSVM algorithm.
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image10.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image10.png" alt="" width="800px" height="450px">
 
-<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image11.png" alt="" width="900px" height="450px">
+<img src="https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image11.png" alt="" width="800px" height="450px">
 
 
 ## Application Output
