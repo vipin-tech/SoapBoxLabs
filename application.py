@@ -248,7 +248,7 @@ class Client:
         data points.
         """
         model_name = model_name.lower()
-        if model_name not in ['oneclasssvm', 'isolatedforest']:
+        if model_name not in ['oneclasssvm', 'isolationforest']:
             raise Exception('Invalid model name specified.')
             return
 
@@ -256,7 +256,7 @@ class Client:
         if model_name == 'oneclasssvm':
             self.model = OneClassSVMModel(**self.kwargs)
 
-        elif model_name == 'isolatedforest':
+        elif model_name == 'isolationforest':
             self.model = IsolationForestModel(**self.kwargs)
 
     def getErrorneousDataPoints(self) -> pd.DataFrame:
@@ -288,9 +288,9 @@ if __name__ == '__main__':
     try:
         # Test Client
         client = Client(path=path, file=file)
-        model_name = input('Please enter the option: 1. IsolatedForest 2. OneClassSVM \n')
+        model_name = input('Please enter the option: 1. Isolation Forest 2. OneClassSVM \n')
 
-        algorithms = {'1': 'isolatedforest', '2': 'oneclasssvm'}
+        algorithms = {'1': 'isolationforest', '2': 'oneclasssvm'}
         algorithm = algorithms.get(model_name)
         if algorithm:
             client.buildModel(algorithm)
