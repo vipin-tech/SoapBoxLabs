@@ -39,35 +39,35 @@ Both these algorithms return the anomaly score of each sample using the Isolatio
 
 ### From the below plots we notice some errorenous data points (spikes) in the dataset.
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png)
+![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image01.png =20x20)
 
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png)
+![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image02.png =20x20)
 
 ### Detection of errorenous points using Isolation Forest algorithm.
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png)
+![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image03.png =20x20)
 
-![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png)
+![Timestamp vs Latitude](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image04.png =20x20)
 
 
 ## Application Output
 
 ### Non Errorenous data points found using Isolation Forest and OneClassSVM algorithms
 
-![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image05.png)
+![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image05.png =20x20)
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image06.png)
+![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image06.png =20x20)
 
 ### Errorenous data points found using IsolationForest and OneClassSVM algorithms
 
-![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image07.png)
+![IsolationForest](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image07.png =20x20)
 
-![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image08.png)
+![OneClassSVM](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image08.png =20x20)
 
 ### Unit Tests
 
-![Unit Test](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image09.png)
+![Unit Test](https://github.com/vipin-tech/SoapBoxLabs/blob/master/screenshots/Image09.png =20x20)
 
 
 ### Summary
