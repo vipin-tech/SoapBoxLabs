@@ -29,7 +29,7 @@ class TestClient(unittest.TestCase):
         client.buildModel('OneClassSVM')
         self.assertIsInstance(client.model, OneClassSVMModel)
 
-        client.buildModel('IsolatedForest')
+        client.buildModel('IsolationForest')
         self.assertIsInstance(client.model, IsolationForestModel)
 
     def test_invalid_model_name(self):

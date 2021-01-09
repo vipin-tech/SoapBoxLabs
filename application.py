@@ -130,7 +130,7 @@ class IsolationForestModel(OutlierDetector):
             raise KeyError('Trying to access invalid key. Error: {}'.
                            format(ex))
         except Exception as ex:
-            raise Exception('Unknown Exception {}'.format(str(ex)))
+            raise Exception('Error while fetching Non-Errorneous data points. Error: {}'.format(str(ex)))
 
     def compute(self) -> None:
         """
@@ -143,10 +143,10 @@ class IsolationForestModel(OutlierDetector):
 
         except KeyError as ex:
             raise KeyError('Trying to access invalid key. Error: {}'.
-                           format(ex))
+                           format(str(ex)))
 
         except Exception as ex:
-            raise Exception('Unknown Exception {}'.format(str(ex)))
+            raise Exception('Error while building IsolationForestModel. Error: {}'.format(str(ex)))
 
 
 class OneClassSVMModel(OutlierDetector):
@@ -204,7 +204,7 @@ class OneClassSVMModel(OutlierDetector):
             raise KeyError('Trying to access invalid key. Error: {}'.
                            format(ex))
         except Exception as ex:
-            raise Exception('Unknown Exception {}'.format(str(ex)))
+            raise Exception('Error while fetching Errorneous data points. Error: {}'.format(str(ex)))
 
     def getDataPoints(self) -> pd.DataFrame:
         """
@@ -225,10 +225,10 @@ class OneClassSVMModel(OutlierDetector):
 
         except KeyError as ex:
             raise KeyError('Trying to access invalid key. Error: {}'.
-                           format(ex))
+                           format(str(ex)))
 
         except Exception as ex:
-            raise Exception('Unknown Exception {}'.format(str(ex)))
+            raise Exception('Error while fetching Non-Errorneous data points. Error: {}'.format(str(ex)))
 
 
 class Client:
@@ -283,12 +283,12 @@ class Client:
             print('Model not Initialised')
 
 
+# Main Program
 if __name__ == '__main__':
 
     path = input('Please enter the path where data points are stored: ').strip()
     file = input('Please enter the file name: ').strip()
     try:
-        # Test Client
         client = Client(path=path, file=file)
         model_name = input('Please enter the option: 1. Isolation Forest 2. OneClassSVM \n')
 
@@ -306,6 +306,7 @@ if __name__ == '__main__':
         # print(errorneous_points)
         print(data_points)
 
+    # @vipin (enchancement): Log the Exceptions.
     except FileNotFoundError as ex:
         print(str(ex))
 
