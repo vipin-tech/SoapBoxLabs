@@ -3,15 +3,16 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.svm import OneClassSVM
 from sklearn.preprocessing import StandardScaler
+from typing import Dict
 
 
 class OutlierDetector:
     """
-    OutlierDetector class helps to load the dataset and the summary statistics
-    of the dataset.
+    OutlierDetector class helps to load the dataset and get the summary
+    statistics of the dataset.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Dict[str, str]):
         self.path = kwargs.get('path')
         self.file = kwargs.get('file')
         self.df = None
@@ -46,7 +47,7 @@ class OutlierDetector:
         else:
             return self.df.head()
 
-    def getMetadata(self) -> object:
+    def getMetadata(self) -> pd.DataFrame:
         """
         Get the description of the attributes in the dataset.
         """
@@ -56,7 +57,7 @@ class OutlierDetector:
         else:
             return self.df.info()
 
-    def describeDataAttribute(self, attr_name: str = None) -> object:
+    def describeDataAttribute(self, attr_name: str = None) -> pd.Series:
         """
         Description in detail based on the attribute name.
         :attr_name: Attribute name of the attribute
@@ -109,7 +110,7 @@ class IsolationForestModel(OutlierDetector):
 
         self.df['ifm_anomaly'] = pd.Series(self.model.predict(self.scale_data))
 
-    def getErrorneousPoints(self) -> object:
+    def getErrorneousPoints(self) -> pd.DataFrame:
         """
         Method to filter the erroneous points based on the anomaly score.
         """
@@ -117,7 +118,7 @@ class IsolationForestModel(OutlierDetector):
                                                           'Latitude',
                                                           'Longitude']]
 
-    def getDataPoints(self) -> object:
+    def getDataPoints(self) -> pd.DataFrame:
         """
         This method returns non-erroneous data points .
         """
@@ -232,11 +233,11 @@ class OneClassSVMModel(OutlierDetector):
 
 class Client:
     """
-    Factory method to in invoke the different algorithms to identify erroneous
+    Method to in invoke the different algorithms to identify erroneous
     data points.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Dict[str, str]):
         self.model = None
         self.model_name = None
         self.kwargs = kwargs
@@ -261,7 +262,7 @@ class Client:
 
     def getErrorneousDataPoints(self) -> pd.DataFrame:
         """
-        Method to identify the errorneous
+        Method to get the errorneous data points.
         """
         if self.model:
             print('Erroneous points in the dataset found using model {}:'
@@ -272,6 +273,7 @@ class Client:
 
     def getDataPoints(self) -> pd.DataFrame:
         """
+        Method to get non-errorneous data points.
         """
         if self.model:
             print('Non-Errorneous points in the dataset found using model {}'
