@@ -96,7 +96,7 @@ class OutlierDetector:
             raise NotImplementedError('Not Implemented scale/fit/predict methods.')
 
         except Exception as ex:
-            raise Exception('Error while building IsolationForestModel. Error: {}'.format(str(ex)))
+            raise Exception('Error while building Model. Error: {}'.format(str(ex)))
 
 
 class IsolationForestModel(OutlierDetector):
