@@ -262,7 +262,6 @@ class Client:
         model_name = model_name.lower()
         if model_name not in ['oneclasssvm', 'isolationforest']:
             raise Exception('Invalid model name specified.')
-            return
 
         self.model_name = model_name
         if model_name == 'oneclasssvm':
