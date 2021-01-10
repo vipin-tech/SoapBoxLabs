@@ -153,7 +153,6 @@ class IsolationForestModel(OutlierDetector):
         except Exception as ex:
             raise Exception('Error while fetching Errorneous data points. Error: {}'.format(str(ex)))
 
-
     def getDataPoints(self) -> pd.DataFrame:
         """
         This method returns non-erroneous data points .
