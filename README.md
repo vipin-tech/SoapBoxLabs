@@ -32,7 +32,7 @@ The IsolationForest Algorithm ‘isolates’ observations by randomly selecting 
 The OneClassSVM Algorithm helps in the detection of the outliers in the dataset. The implementation of this algorithm is based on libsvm.
 
 
-Both these algorithms return the anomaly score of each sample using the IsolationForest algorithm.
+Both these algorithms return the anomaly score for each sample which helps in differentiating between errorneous and non-errorneous datapoints.
 
 
 ## Analysis
