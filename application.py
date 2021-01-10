@@ -4,6 +4,7 @@ from sklearn.ensemble import IsolationForest
 from sklearn.svm import OneClassSVM
 from sklearn.preprocessing import StandardScaler
 from typing import Dict
+import sys
 
 
 class OutlierDetector:
@@ -308,6 +309,7 @@ if __name__ == '__main__':
             client.buildModel(algorithm)
         else:
             print('Invalid Option specified.')
+            sys.exit()
 
         # Need to return non-errorneous data points
         # errorneous_points = client.getErrorneousDataPoints()
@@ -316,7 +318,7 @@ if __name__ == '__main__':
         # print(errorneous_points)
         print(data_points)
 
-    # @vipin (enchancement): Log the Exceptions.
+    # @vipin (enhancement): Log the Exceptions.
     except FileNotFoundError as ex:
         print(str(ex))
 
