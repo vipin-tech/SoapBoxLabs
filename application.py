@@ -142,9 +142,16 @@ class IsolationForestModel(OutlierDetector):
         """
         Method to filter the erroneous points based on the anomaly score.
         """
-        return self.df.loc[self.df['ifm_anomaly'] == -1, ['Timestamp',
-                                                          'Latitude',
-                                                          'Longitude']]
+        try:
+            return self.df.loc[self.df['ifm_anomaly'] == -1, ['Timestamp',
+                                                              'Latitude',
+                                                              'Longitude']]
+        except KeyError as ex:
+            raise KeyError('Trying to access invalid key. Error: {}'.
+                           format(ex))
+        except Exception as ex:
+            raise Exception('Error while fetching Errorneous data points. Error: {}'.format(str(ex)))
+
 
     def getDataPoints(self) -> pd.DataFrame:
         """
@@ -222,9 +229,16 @@ class OneClassSVMModel(OutlierDetector):
         """
         This method returns non-erroneous data points .
         """
-        return self.df.loc[self.df['ocs_anomaly'] == 1, ['Timestamp',
-                                                         'Latitude',
-                                                         'Longitude']]
+        try:
+            return self.df.loc[self.df['ocs_anomaly'] == 1, ['Timestamp',
+                                                             'Latitude',
+                                                             'Longitude']]
+
+        except KeyError as ex:
+            raise KeyError('Trying to access invalid key. Error: {}'.
+                           format(ex))
+        except Exception as ex:
+            raise Exception('Error while fetching Non-Errorneous data points. Error: {}'.format(str(ex)))
 
 
 class Client:
