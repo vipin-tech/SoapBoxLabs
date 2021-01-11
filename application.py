@@ -5,6 +5,10 @@ from sklearn.svm import OneClassSVM
 from sklearn.preprocessing import StandardScaler
 from typing import Dict
 import sys
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
 
 
 class OutlierDetector:
@@ -29,7 +33,7 @@ class OutlierDetector:
                 self.df = pd.read_csv(file, names=['Latitude', 'Longitude',
                                                    'Timestamp'])
             else:
-                print('Dataset path not specified')
+                logging.info('Dataset path not specified')
 
         except FileNotFoundError as ex:
             raise FileNotFoundError('File Not found in the specified path.\
@@ -51,6 +55,7 @@ class OutlierDetector:
     def getMetadata(self) -> pd.DataFrame:
         """
         Get the description of the attributes in the dataset.
+        :return: Dataframe containing dataset detailed info.
         """
 
         if self.df is None:
@@ -62,6 +67,8 @@ class OutlierDetector:
         """
         Description in detail based on the attribute name.
         :attr_name: Attribute name of the attribute
+
+        :return: Series containing description of attribute.
         """
 
         try:
@@ -84,14 +91,14 @@ class OutlierDetector:
         """
         Method to fit the model and predict the erroneous data points
         """
+
         try:
             self.scale()
             self.fit()
             self.predict()
 
         except KeyError as ex:
-            raise KeyError('Trying to access invalid key. Error: {}'.
-                           format(str(ex)))
+            raise KeyError('Trying to access invalid key. Error: {}'.format(str(ex)))
 
         except NotImplementedError:
             raise NotImplementedError('Not Implemented scale/fit/predict methods.')
@@ -107,6 +114,11 @@ class IsolationForestModel(OutlierDetector):
     """
 
     def __init__(self, outlier_fraction=0.03, **kwargs):
+        """
+        :outlier_fraction: Fraction of outliers present in the dataset.
+        :kwargs: dictionary key-value pairs.
+        """
+
         OutlierDetector.__init__(self, **kwargs)
         self.outlier_fraction = outlier_fraction
         self.scale_data = None
@@ -142,6 +154,8 @@ class IsolationForestModel(OutlierDetector):
     def getErrorneousPoints(self) -> pd.DataFrame:
         """
         Method to filter the erroneous points based on the anomaly score.
+
+        :return: DataFrame containing errorneous data points.
         """
         try:
             return self.df.loc[self.df['ifm_anomaly'] == -1, ['Timestamp',
@@ -155,7 +169,9 @@ class IsolationForestModel(OutlierDetector):
 
     def getDataPoints(self) -> pd.DataFrame:
         """
-        This method returns non-erroneous data points .
+        This method returns non-erroneous data points.
+
+        :return: Dataframe containing non-errorneous data points.
         """
         try:
             return self.df.loc[self.df['ifm_anomaly'] == 1, ['Timestamp',
@@ -174,8 +190,15 @@ class OneClassSVMModel(OutlierDetector):
     dataset based on the anomaly score computed using OneClassSVM Algorithm
     """
 
-    def __init__(self, outlier_fraction=0.03, kernel='rbf', gamma=0.01,
-                 **kwargs):
+    def __init__(self, outlier_fraction=0.03, kernel='rbf', gamma='scale', **kwargs):
+        """
+        :outlier_fraction: Fraction of outliers present in the dataset.
+        Typically varies based on the input data.
+        :kernel: Kernel Coefficient
+        :gamma: 1 / (n_features * X.var())
+        :kwargs: dictionary key-value pairs.
+        """
+
         OutlierDetector.__init__(self, **kwargs)
         self.outlier_fraction = outlier_fraction
         self.scale_data = None
@@ -200,8 +223,7 @@ class OneClassSVMModel(OutlierDetector):
         Method to fit the model on the scaled data.
         """
 
-        self.model = OneClassSVM(nu=self.outlier_fraction, kernel=self.kernel,
-                                 gamma=self.gamma)
+        self.model = OneClassSVM(nu=self.outlier_fraction, kernel=self.kernel, gamma=self.gamma)
         self.model.fit(self.scale_data)
 
     def predict(self) -> None:
@@ -214,6 +236,8 @@ class OneClassSVMModel(OutlierDetector):
     def getErrorneousPoints(self) -> pd.DataFrame:
         """
         Method to filter the errorneous points based on the anomaly score.
+
+        :return: Dataframe containing errorneous data points.
         """
         try:
             return self.df.loc[self.df['ocs_anomaly'] == -1, ['Timestamp',
@@ -228,11 +252,11 @@ class OneClassSVMModel(OutlierDetector):
     def getDataPoints(self) -> pd.DataFrame:
         """
         This method returns non-erroneous data points .
+
+        :return: Dataframe containing non-errorneous data points.
         """
         try:
-            return self.df.loc[self.df['ocs_anomaly'] == 1, ['Timestamp',
-                                                             'Latitude',
-                                                             'Longitude']]
+            return self.df.loc[self.df['ocs_anomaly'] == 1, ['Timestamp', 'Latitude', 'Longitude']]
 
         except KeyError as ex:
             raise KeyError('Trying to access invalid key. Error: {}'.
@@ -274,22 +298,20 @@ class Client:
         Method to get the errorneous data points.
         """
         if self.model:
-            print('Erroneous points in the dataset found using model {}:'
-                  .format(self.model_name))
+            print('Erroneous points in the dataset found using model {}:'.format(self.model_name))
             return self.model.getErrorneousPoints()
         else:
-            print('Model Not Initialised')
+            logging.info('Model Not Initialised')
 
     def getDataPoints(self) -> pd.DataFrame:
         """
         Method to get non-errorneous data points.
         """
         if self.model:
-            print('Non-Errorneous points in the dataset found using model {}'
-                  .format(self.model_name))
+            print('Non-Errorneous points in the dataset found using model {}'.format(self.model_name))
             return self.model.getDataPoints()
         else:
-            print('Model not Initialised')
+            logging.info('Model not Initialised')
 
 
 # Main Program
@@ -306,7 +328,7 @@ if __name__ == '__main__':
         if algorithm:
             client.buildModel(algorithm)
         else:
-            print('Invalid Option specified.')
+            logging.info('Invalid Option specified.')
             sys.exit()
 
         # Need to return non-errorneous data points
@@ -316,15 +338,14 @@ if __name__ == '__main__':
         # print(errorneous_points)
         print(data_points)
 
-    # @vipin (enhancement): Log the Exceptions.
     except FileNotFoundError as ex:
-        print(str(ex))
+        logging.info(str(ex))
 
     except KeyError as ex:
-        print(str(ex))
+        logging.info(str(ex))
 
     except NotImplementedError as ex:
-        print(str(ex))
+        logging.info(str(ex))
 
     except Exception as ex:
-        print(str(ex))
+        logging.info(str(ex))
